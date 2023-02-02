@@ -1,0 +1,59 @@
+{% extends 'app/base.html' %}
+	{% load static %}
+	{% block content %}
+	 {% for post in posts %}
+ <section class="page-section clearfix">
+    <div class="container">
+      <div class="intro">
+        <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{post.imagenes.url}}" alt="" style="width: 35%">
+        <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+          <h2 class="section-heading mb-4" >
+            
+            <span class="section-heading-lower">{{post.titulo}}</span>
+          </h2>
+          <p class="mb-3">{{post.contenido}}
+          </p>
+          <div style="text-align: left;">
+            <p class="mb-1" style="color: whitesmoke; list-style-type: arabic-indic ;">by: {{post.autor}}
+          </div>
+         
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+{% endfor %}
+
+
+<section class="page-section cta">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-9 mx-auto">
+            <div class="cta-inner text-center rounded">
+              <h2 class="section-heading mb-4">
+                <span class="section-heading-upper">nuestras</span>
+                <span class="section-heading-lower">Categorias:</span>
+              </h2>
+              
+{% for post in posts %}
+           {% for categoria in post.categorias.all %}
+              <div>
+                <p class="mb-0">{{categoria.nombre}}. &nbsp;&nbsp;&nbsp;</p>
+
+              </div>
+              {% endfor %}
+   {% endfor %}
+
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    {% endblock %}
