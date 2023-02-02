@@ -1,0 +1,68 @@
+{% extends 'app/base.html' %}
+	{% load static %}
+	{% block content %}
+
+  <div class="container">
+    <div style="float: right ;">
+      
+      {% include "carro/widget.html" %}
+    </div>
+  <div class="row">
+  {% for producto in productos %}
+  <div class="col-md-3">
+  <div class="card" style="width: 100%; margin: 5px 5px;"> 
+    <img src="{{producto.imagenes.url}}" class="card-img-top">
+    <div class="card-body">
+      <h6 class="card-title" style="text-align:center;"> {{producto.nombre}}</h6>
+ 
+      <p class="card-text"> $ &nbsp; {{producto.precio}} </p>
+
+
+
+
+    </div>
+
+    <div class="card-footer text-center">
+      <a href="{% url 'carro:agregar' producto.id %}" class="btn btn-succes"> agregar </a>
+
+    </div>
+
+  </div>
+
+</div>
+  {% endfor %}
+</div>
+</div>
+
+<section class="page-section" >
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-9 mx-auto">
+            <div class="cta-inner text-center rounded">
+        
+                <span class="section-heading-upper" style="color: whitesmoke;">nuestras</span>
+                <span class="section-heading-lower" style="color: whitesmoke;">Categorias:</span>
+           
+  <div>
+{% for producto in productos %}
+           {% for categoriap in producto.categoriap.all %}
+            
+                <a href="{% url 'categoriap' categoriap.id %}"> {{categoriap.nombre}} </a>
+
+             
+              {% endfor %}
+   {% endfor %}
+
+ </div>
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+    {% endblock %}
