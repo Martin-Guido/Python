@@ -12,12 +12,11 @@ def contacto(request):
 			nombre=request.POST.get('nombre')
 			email=request.POST.get('email')
 			mensaje=request.POST.get('mensaje')
-		#	send_mail(inffor['nombre'],inffor['mensaje'],
-		#		inffor.get('email',''),['albertomartinguido@gmail.com'],)
+	
 			
 			mail=EmailMessage("Mensaje desde pagina web",
 				"EL usario con nombre {} con la direccion {} escribe lo siguiente: \n \n{}".format(nombre,email,mensaje),
-				"",["albertomartinguido@gmail.com"],reply_to=[email])
+				"",["***@gmail.com"],reply_to=[email])
 			try :
 				mail.send()
 				return redirect('/contacto/?valido')
